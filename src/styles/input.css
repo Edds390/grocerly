@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-primary {
+    @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded;
+  }
+  
+  .btn-danger {
+    @apply bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded;
+  }
+  
+  .input-field {
+    @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500;
+  }
+  
+  .card {
+    @apply bg-white shadow-md rounded-lg p-6 mb-4;
+  }
+  
+  .deal-card {
+    @apply bg-white border border-gray-200 rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow;
+  }
+}

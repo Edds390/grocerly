@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Content Script</title>
+</head>
+<body>
+    <h1>Content Script Test</h1>
+    <p>This page tests if the content script can be manually injected and works.</p>
+    
+    <button id="testContentScript">Test Content Script</button>
+    <div id="results"></div>
+    
+    <script>
+        document.getElementById('testContentScript').addEventListener('click', async () => {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = 'Testing...';
+            
+            try {
+                // Open a Coles page
+                const tab = await chrome.tabs.create({
+                    url: 'https://www.coles.com.au/search/products?q=milk',
+                    active: false
+                });
+                
+                console.log('Tab created:', tab.id);
+                
+                // Wait for page to load
+                await new Promise(resolve => setTimeout(resolve, 5000));
+                
+                // Try to ping content script
+                try {
+                    const response = await chrome.tabs.sendMessage(tab.id, { action: 'ping' });
+                    resultsDiv.innerHTML = `✅ Content script working: ${JSON.stringify(response)}`;
+                } catch (error) {
+                    resultsDiv.innerHTML = `❌ Content script not responding: ${error.message}`;
+                }
+                
+                // Close tab
+                await chrome.tabs.remove(tab.id);
+                
+            } catch (error) {
+                resultsDiv.innerHTML = `❌ Test failed: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>
