@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Deals Finder - Results</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Header -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <h1 class="text-3xl font-bold text-gray-800">🛒 Grocery Deals Finder</h1>
+                <button id="refreshDeals" class="btn-primary">
+                    Refresh Deals
+                </button>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <div class="text-2xl font-bold text-blue-600" id="totalDeals">0</div>
+                    <div class="text-sm text-gray-600">Active Deals</div>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <div class="text-2xl font-bold text-green-600" id="trackedItems">0</div>
+                    <div class="text-sm text-gray-600">Tracked Items</div>
+                </div>
+                <div class="bg-purple-50 p-4 rounded-lg">
+                    <div class="text-2xl font-bold text-purple-600" id="lastUpdate">-</div>
+                    <div class="text-sm text-gray-600">Last Updated</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manage Items Section -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Manage Grocery Items</h2>
+            
+            <div class="flex gap-2 mb-4">
+                <input 
+                    type="text" 
+                    id="newItemInput" 
+                    placeholder="Enter grocery item (e.g., milk, bread, apples)"
+                    class="input-field flex-1"
+                >
+                <button id="addItemBtn" class="btn-primary">
+                    Add Item
+                </button>
+            </div>
+
+            <div id="groceryItemsList" class="space-y-2">
+                <!-- Items will be populated here -->
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loadingSection" class="hidden text-center py-8">
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+            <p class="text-gray-600 mt-2">Searching for deals...</p>
+        </div>
+
+        <!-- Deals Section -->
+        <div id="dealsSection">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-semibold text-gray-800">Current Deals</h2>
+                <div class="flex gap-2">
+                    <select id="storeFilter" class="input-field w-auto">
+                        <option value="all">All Stores</option>
+                        <option value="coles">Coles</option>
+                        <option value="woolworths">Woolworths</option>
+                        <option value="aldi">Aldi</option>
+                    </select>
+                    <select id="sortBy" class="input-field w-auto">
+                        <option value="price">Sort by Price</option>
+                        <option value="date">Sort by Date</option>
+                        <option value="store">Sort by Store</option>
+                        <option value="item">Sort by Item</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="dealsContainer" class="space-y-6">
+                <!-- Deals will be populated here -->
+            </div>
+
+            <div id="noDealsMessage" class="hidden text-center py-8">
+                <div class="text-gray-500">
+                    <p class="text-lg mb-2">No deals found</p>
+                    <p class="text-sm">Add some grocery items above and click "Refresh Deals" to start finding deals!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="results.js"></script>
+</body>
+</html>

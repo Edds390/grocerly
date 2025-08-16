@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Grocery Deals Finder",
+  "version": "1.0.0",
+  "description": "Find deals on your favorite grocery items from Coles and Woolworths",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://www.coles.com.au/*",
+    "https://www.woolworths.com.au/*",
+    "https://www.aldi.com.au/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Grocery Deals Finder"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.coles.com.au/*",
+        "https://www.woolworths.com.au/*",
+        "https://www.aldi.com.au/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["results.html", "test-content-script.html"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
