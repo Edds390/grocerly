@@ -1,6 +1,6 @@
 # Grocery Deals Finder Chrome Extension
 
-A Chrome extension that helps you save money on groceries.
+A Chrome extension that helps you save money on groceries
 
 ## Installation
 
